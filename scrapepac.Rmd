@@ -1,0 +1,13 @@
+#webscraping from gbif
+#install packages
+library(rgbif)
+library(plyr)
+library(XML)
+library(httr)
+library(dismo)
+library(maps)
+library(rgeos)
+myrger <- gbif('Scarus', 'tricolor', geo=T)
+
+install.packages("devtools")
+devtools::install_github("ropensci/rgbif")
