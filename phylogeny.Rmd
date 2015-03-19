@@ -1,0 +1,13 @@
+#create scaled phylogeny
+#load libraries
+library(BAMMtools)
+library(ape)
+setwd ("~/Desktop/Labfiles/scarus")
+getwd()
+tree <- read.tree("scarus.tre.txt")
+#print tree info
+show(tree)
+#print tree with names, cex to set font size
+plot(tree, cex=.6)
+#read in data created by reading tree
+edata <- getEventData(tree, eventdata = "sevent_data.txt", burnin=0.1)
