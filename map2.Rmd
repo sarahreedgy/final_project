@@ -1,0 +1,45 @@
+#the map created in the previous commit has some issues, hence exploration in gg plot
+#creating a map in ggplot
+#load libraries
+library(maps)
+library(mapproj)
+library(ggmap)
+library(raster)
+library(ggplot2)
+#scale to region
+mapLocation <- c(25, -25, 175, 40)
+#load map
+myMap <- get_map(location=mapLocation, source="stamen", maptype="watercolor", crop=FALSE)
+#xample with scarus tri color
+#scarustcpoints <- read.csv(file= "scarustricoloroutput.csv", header=FALSE)
+#head(scarustcpoints)
+#colnames(scarustcpoints) <- c("NA", "name", "key", "decimalLatitude", "decimalLongitude", "x", "y", "s", "a", "t", "w")
+#ggmap(myMap) + geom_point(aes(x = scarustcpoints$decimalLongitude, y = scarustcpoints$decimalLatitude), alpha = .5, color="darkred", size = 3)
+#this causes an issue with data frame alignment
+
+#graphing one point at a time
+plot.new()
+#scale to region
+mapLocation <- c(25, -25, 175, 40)
+#load map
+myMap <- get_map(location=mapLocation, source="stamen", maptype="watercolor", crop=FALSE)
+ggmap(myMap) + geom_point(aes(x = 119.61441, y = -8.5371), alpha = .5, color="darkred", size = 3)
+
+#so we know its not a data issue
+#data format issue
+#create a data frame
+read.csv(file= "scarustricoloroutput.csv", header=FALSE)
+head(scarustcpoints)
+c("NA", "name", "key", "decimalLatitude", "decimalLongitude", "x", "y", "s", "a", "t", "w")
+mapLocation <- c(25, -25, 175, 40)
+myMap <- get_map(location=mapLocation, source="stamen", maptype="watercolor", crop=FALSE)
+ggmap(myMap) + geom_point(aes(x = latt, y = lonn), alpha = .5, color="darkred", size = 3)
+
+library(reshape)
+
+data <- scarustcpoints
+ndata <- melt(data, id=c("decimalLatitude","decimalLongitude"))
+head(scarustcpoints)
+colnames(scarustcpoints) <- c("NA", "name", "key", "decimalLatitude", "decimalLongitude", "x", "y", "s", "a", "t", "w")
+reshape
+
