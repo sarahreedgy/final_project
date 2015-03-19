@@ -1,0 +1,8 @@
+#best shift configuration, phylogney with scaled branches, color scaling shows increase in rate of diversification
+setwd ("~/Desktop/Labfiles/scarus")
+tree <-read.tree("scarus.tre.txt")
+poissonRatePrior = 0.1
+prior <- getBranchShiftPriors(tree, prior="prior_probs.txt")
+best <- getBestShiftConfiguration(edata, prior=prior, BFcriterion=3)
+plot.bammdata(best, lwd=1.25)
+addBAMMshifts(best, cex=2)
