@@ -1,0 +1,11 @@
+#load libraries
+library(plyr)
+library(rworldmap)
+library(maptools)
+library(ggplot2)
+library(ggmap)
+library(sp)
+#get map
+plot.new()
+scarusmap <- getMap(resolution= "low")
+plot(scarusmap,  xlim = c(0, 100), ylim = c(-50, 120), asp=1.5)
